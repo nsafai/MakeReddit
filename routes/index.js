@@ -2,10 +2,17 @@ var express = require('express');
 var router = express.Router();
 const User = require('../models/user');
 
+// set layout variables
+router.use(function(req, res, next) {
+  res.locals.title = "Make Reddit";
+  res.locals.currentUserId = req.session.userId;
+
+  next();
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    const currentUserId = req.session.userId;
-  res.render('index', { title: 'Make Reddit', currentUserId: currentUserId });
+  res.render('index');
 });
 
 // login
