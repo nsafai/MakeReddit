@@ -1,5 +1,5 @@
 # Clone Reddit in Node JS
-Building a Reddit clone as part of Make School's BEW 1.2 class using the Summer Academy's ["MakeReddit" tutorial](https://www.makeschool.com/academy/track/web-dev-summer-academy-2018/makereddit/)
+Building a Reddit clone as part of Make School's BEW 1.2 class using the Summer Academy's ["MakeReddit" tutorial](https://www.makeschool.com/academy/track/web-dev-summer-academy-2018/makereddit/00-get-started)
 
 ## Summary
 1. Getting Started
