@@ -4,7 +4,8 @@ const User = require('../models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Make Reddit Baby' });
+    const currentUserId = req.session.userId;
+  res.render('index', { title: 'Make Reddit', currentUserId: currentUserId });
 });
 
 // login
