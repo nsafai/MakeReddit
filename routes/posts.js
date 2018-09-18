@@ -3,7 +3,10 @@ const router = express.Router({mergeParams: true});
 const auth = require('./helpers/auth');
 const Room = require('../models/room');
 const Post = require('../models/post');
+const Comment = require('../models/comment');
+const commentsRouter = require('./comments');
 
+//new
 router.get('/new', auth.requireLogin, (req, res, next) => {
   Room.findById(req.params.roomId, function(err, room) {
     if(err) { console.error(err) };
@@ -12,6 +15,7 @@ router.get('/new', auth.requireLogin, (req, res, next) => {
   });
 });
 
+//create
 router.post('/', auth.requireLogin, (req, res, next) => {
   Room.findById(req.params.roomId, function(err, room) {
     if(err) { console.error(err) };
@@ -26,5 +30,8 @@ router.post('/', auth.requireLogin, (req, res, next) => {
     });
   });
 })
+
+// Add this line to nest comments inside specific post
+router.use('/:postId/comments', commentsRouter);
 
 module.exports = router;
