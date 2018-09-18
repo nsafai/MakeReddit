@@ -31,6 +31,20 @@ router.post('/', auth.requireLogin, (req, res, next) => {
   });
 })
 
+// When we receive a request to this action, we first find the correct Post object.
+// Then we add the value of req.body.points to the Post object's points
+router.post('/:id', auth.requireLogin, (req, res, next) => {
+  Post.findById(req.params.id, function(err, post) {
+    post.points += parseInt(req.body.points);
+
+    post.save(function(err, post) {
+      if(err) { console.error(err) };
+
+      return res.redirect(`/rooms/${post.room}`);
+    });
+  });
+});
+
 // Add this line to nest comments inside specific post
 router.use('/:postId/comments', commentsRouter);
 
